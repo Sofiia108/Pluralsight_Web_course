@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Sofia's website! </title>
+    <style>
+        li {
+            background-color: rgb(100, 196, 183);
+        }
+
+        .use-important {
+            background-color: rgb(248, 145, 193) !important;
+        }
+
+        .colors {
+            background-color: brown;
+        }
+
+
+        #special {
+            background-color: rgb(179, 105, 53);
+        }
+
+
+        @media (max-width: 480px) {
+            li {
+                background-color: darksalmon;
+            }
+        }
+    </style>
+    <script>
+        function ShowDate() {
+            window.document.getElementById("demo").innerHTML = new Date();
+        }
+        function PromptUser() {
+            var txt;
+            var name = window.prompt('Enter your name');
+            if (name != null && name != "") {
+                txt = "Hello " + name;
+                document.getElementById("name").innerHTML = txt;
+            }
+        }
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responceText;
+                }
+            }
+            xhttp.open("GET", "ajax_info.txt", true);
+            xhttp.send();
+        }
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    </script>
+</head>
+
+<body>
+
+    <div>
+        <ul>
+            <li> This </li>
+            <li class="colors use-important" id="special" style="background-color: rgb(187, 191, 223)!important;"> is an
+            </li>
+            <li class="colors use-important"> unordered list </li>
+        </ul>
+    </div>
+
+    <button type="button" onclick="ShowDate();">
+        See the date
+    </button>
+    <p id="demo"></p>
+
+    <button type="button" onclick="PromptUser();">
+        Prompt me
+    </button>
+    <p id="name"></p>
+
+    <div ng-app="">
+        <p>Input something in the input box and it will be written below</p>
+        <p>Name:<input type="text" ng-model="name"></p>
+        <p ng-bind="name"></p>
+    </div>
+</body>
+
+</html>
