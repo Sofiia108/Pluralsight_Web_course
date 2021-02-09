@@ -10,6 +10,7 @@
 <body>
     <script>
         function greet() {
+
             let name = "Craig";
             {
                 let name = "Tyler";
@@ -49,11 +50,12 @@
             twitter: "@craigshoemaker",
             greetFromCraig: function()
             {
-                console.log("My name is " + this.firstName);
+                return "My name is " + this.firstName;
             }
         }
         
         console.log(person.lastName);
+        console.log(person.greetFromCraig());
 
         //ARRAY
 
